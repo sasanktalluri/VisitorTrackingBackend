@@ -28,7 +28,7 @@ public class ServiceUsageService {
 
         ServiceUsage usage = new ServiceUsage();
         usage.setVisitorId(visitor.getId());
-        usage.setServiceType(req.getServiceType());
+        usage.setServiceType(req.getServiceType().toUpperCase());
         return serviceRepo.save(usage);
     }
 }

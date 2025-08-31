@@ -14,9 +14,9 @@ public class Payment {
 
     private Long visitorId;
 
-    private String category;       // e.g., Appointment Fee, Medical Fee
+    private String category;       //  Appointment Fee, Medical Fee
 
-    private String serviceType;    // e.g., CONSULTATION, SURGERY
+    private String serviceType;    // CONSULTATION, SURGERY
 
     private Double amount;
 

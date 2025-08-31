@@ -6,6 +6,7 @@ import com.visitortracker.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
@@ -88,4 +89,30 @@ public class DashboardService {
 
         return new VisitorDetailsResponse(visitor, visits, payments, services);
     }
+
+    public List<TransactionResponse> getTransactionsForPeriod(String period) {
+        LocalDateTime start;
+        if (period.equalsIgnoreCase("today")) {
+            start = LocalDate.now().atStartOfDay();
+        } else if (period.equalsIgnoreCase("week")) {
+            start = LocalDate.now().with(DayOfWeek.MONDAY).atStartOfDay();
+        } else if (period.equalsIgnoreCase("month")) {
+            start = LocalDate.now().withDayOfMonth(1).atStartOfDay();
+        } else {
+            throw new IllegalArgumentException("Invalid period");
+        }
+
+        return paymentRepo.findAll().stream()
+                .filter(p -> p.getPaidAt().isAfter(start))
+                .map(p -> {
+                    Visitor v = visitorRepo.findById(p.getVisitorId()).orElse(null);
+                    return new TransactionResponse(
+                            v != null ? v.getName() : "Unknown",
+                            p.getServiceType(),
+                            p.getAmount(),
+                            p.getPaidAt().toString()
+                    );
+                }).toList();
+    }
+
 }

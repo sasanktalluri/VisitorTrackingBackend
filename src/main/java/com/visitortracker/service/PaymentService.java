@@ -31,7 +31,7 @@ public class PaymentService {
         Payment payment = new Payment();
         payment.setVisitorId(visitor.getId());
         payment.setCategory(request.getCategory());
-        payment.setServiceType(request.getServiceType());
+        payment.setServiceType(request.getServiceType().toUpperCase());
         payment.setAmount(request.getAmount());
         payment.setPaidAt(LocalDateTime.now());
 
