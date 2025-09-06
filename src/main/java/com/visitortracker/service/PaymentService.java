@@ -9,12 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+
 
 @Service
 public class PaymentService {
 
     @Autowired
     private VisitorRepository visitorRepo;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     @Autowired
     private PaymentRepository paymentRepo;
@@ -34,6 +41,12 @@ public class PaymentService {
         payment.setServiceType(request.getServiceType().toUpperCase());
         payment.setAmount(request.getAmount());
         payment.setPaidAt(LocalDateTime.now());
+        if(request.getTimestamp()!=null)
+        {
+            LocalDate date = LocalDate.parse(request.getTimestamp(), formatter);
+            LocalDateTime dateTime = date.atStartOfDay();
+            payment.setPaidAt(dateTime);
+        }
 
         return paymentRepo.save(payment);
     }

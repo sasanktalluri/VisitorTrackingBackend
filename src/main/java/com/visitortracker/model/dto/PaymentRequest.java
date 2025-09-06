@@ -1,11 +1,23 @@
 package com.visitortracker.model.dto;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class PaymentRequest {
     private String phoneNumber;
     private String name;
     private String category;
     private String serviceType;
     private Double amount;
+    private String timestamp = null;
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;

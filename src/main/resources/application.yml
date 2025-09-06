@@ -11,3 +11,6 @@ spring:
 app:
   jwtSecret: i6QWxbho2ov9CPZCq1PgrxVoR3F0cOtAkxOfLIwTCSkZ4P2YvVHVLCyAx7D6DyN7o/JvXMvSRng1IppwObFyzA==
   jwtExpirationMs: 86400000
+google:
+  vision:
+    apiKey: AIzaSyDgcjwyz6MZ04vJMAxN1WAEdW8VJng1MD4
