@@ -72,6 +72,7 @@ public class OcrController {
             // Split into chunks by each payment block
             String[] blocks = ocrText.split("(?=Name:)");
             List<ExtractedPayment> payments = new ArrayList<>();
+            System.out.println(ocrText);
 
             for (String block : blocks) {
                 String name = sanitize(extractField(block, "(?i)Name\\s*[:\\-]?\\s*(\\w+)"));

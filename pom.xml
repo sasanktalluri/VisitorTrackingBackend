@@ -96,6 +96,14 @@
             <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- put a recent stable version -->
+        <dependency>
+            <groupId>com.google.auth</groupId>
+            <artifactId>google-auth-library-oauth2-http</artifactId>
+            <version>1.39.0</version>
+        </dependency>
+
+
 
 
     </dependencies>

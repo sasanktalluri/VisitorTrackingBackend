@@ -9,6 +9,10 @@ public class ExtractedPayment {
     private double amount;
     private String timestamp;
 
+    public ExtractedPayment()
+    {
+
+    }
     public ExtractedPayment(String name, String Phone, String serviceType, String category, double amount, String timestamp) {
         this.name = name;
         this.PhoneNumber = Phone;

@@ -14,3 +14,10 @@ app:
 google:
   vision:
     apiKey: AIzaSyDgcjwyz6MZ04vJMAxN1WAEdW8VJng1MD4
+docai:
+  endpoint: "https://us-documentai.googleapis.com"
+  processor-name: "projects/442256500910/locations/us/processors/a6070b6f8153e1b6"
+
+gcp:
+  credentials:
+    file: "/Users/sasanktalluri/Documents/visitortrackingocr-056f86afc3e1.json"  # <-- put your saved path here
